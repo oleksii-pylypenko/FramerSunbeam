@@ -142,7 +142,7 @@ function PreviewPresentation({
                     return
             }
         },
-        [upKey, downKey, leftKey, rightKey, onKeyPress]
+        [upKey, downKey, leftKey, rightKey, onKeyPress, paused]
     )
 
     return (
