@@ -40,6 +40,7 @@ interface Props {
     downKey?: string
     leftKey?: string
     rightKey?: string
+    paused?: boolean
     onKeyPress?: (event: KeyboardEvent) => void
     onFocusUpdate?: (event: { focusPath: ReadonlyArray<string> }) => void
     unstable_getPreferredChildOnFocusReceive?: (args: {
@@ -95,6 +96,7 @@ function PreviewPresentation({
     rightKey = "ArrowRight",
     onKeyPress,
     onFocusUpdate,
+    paused,
     unstable_getPreferredChildOnFocusReceive,
     getPreferredChildOnFocusReceive,
 }: Props) {
@@ -109,6 +111,8 @@ function PreviewPresentation({
     const handleKeyDown = useCallback(
         (event: Event) => {
             if (!(event instanceof KeyboardEvent)) return
+
+            if (paused) return
 
             if (onKeyPress) onKeyPress(event)
 
